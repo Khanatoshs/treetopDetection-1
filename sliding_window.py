@@ -419,7 +419,8 @@ def outputImages(dem,seeds,args,cutoff=0,index=None):
 
     if index is not None: out_binary=out_binary[:-4] +str(index)+ out_binary[-4:]
     #print("out binary will be "+out_binary)
-    pixels_to_shapefile(args["dem"],seeds,args["binshpOut"])
+    if args["binshpOut"] is not None:
+        pixels_to_shapefile(args["dem"],seeds,args["binshpOut"])
     #cv2.imwrite(out_dem, dem)
     cv2.imwrite(out_binary, maskImage)
 
